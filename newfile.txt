@@ -27,3 +27,4 @@ initialize a git repository in it.
 - Check the status.
 - inspect the changes.
 9 check using git checkout command
+new first line added
