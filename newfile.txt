@@ -1,1 +1,28 @@
-hi vedang
+hi vedang1. Create a folder and name it AvengersInitiative.
+initialize a git repository in it.
+2. Create file called Ironman1.
+- add Ironman1.txt to staging area.
+- Commit Ironman1.txt with proper message.
+- Check the status.
+- inspect the changes.
+3. Create file called Ironman2.
+- add Ironman2.txt to staging area.
+- Commit Ironman2.txt with proper message.
+- Check the status.
+- inspect the changes.
+4. Create file called Ironman3.
+- add Ironman3.txt to staging area.
+- Commit Ironman2.txt with proper message.
+- Check the status.
+- inspect the changes.5. Create branch feature/CaptainAmerica.
+6. Checkout to the newly created feature/CaptainAmerica branch.
+7. Create file called CaptainAmerica1.
+- add CaptainAmerica1.txt to staging area.
+- Commit CaptainAmerica1.txt with proper message.
+- Check the status.
+- inspect the changes.
+8. Create file called CaptainAmerica2.
+- add CaptainAmerica2.txt to staging area.
+- Commit CaptainAmerica2.txt with proper message.
+- Check the status.
+- inspect the changes.
