@@ -30,3 +30,4 @@ initialize a git repository in it.
 new first line added
 First line added for checking reset command
 Second line added for checking reset command
+changed in new branch
