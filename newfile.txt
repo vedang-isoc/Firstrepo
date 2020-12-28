@@ -26,3 +26,4 @@ initialize a git repository in it.
 - Commit CaptainAmerica2.txt with proper message.
 - Check the status.
 - inspect the changes.
+9 check using git checkout command
