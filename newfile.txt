@@ -29,3 +29,4 @@ initialize a git repository in it.
 9 check using git checkout command
 new first line added
 First line added for checking reset command
+Second line added for checking reset command
