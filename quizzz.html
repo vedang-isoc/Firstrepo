@@ -1,0 +1,113 @@
+<!doctype html>
+<title>CSS Grid Template 2</title>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  
+  <script src='jquery-3.5.1 (1).js'></script>
+<script src="quiz.js"></script>
+<style>
+    button{
+        border-radius: 10%;
+        margin: 10px;
+        background-color:rgb(110, 110, 13); /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+    cursor: pointer;
+    }
+body { 
+  display: grid;
+  grid-template-areas: 
+    "header header header"
+    "nav article ads"
+    "footer footer footer";
+  grid-template-rows: 80px 1fr 70px;  
+  grid-template-columns: 20% 1fr 15%;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  height: 100vh;
+  margin: 0;
+  }  
+header, footer, article, nav, div {
+  padding: 1.2em;
+  
+  
+  }
+#pageHeader {
+  grid-area: header;
+  background-color: rgb(10, 22, 71);
+ 
+  
+
+  }
+#pageFooter {
+  grid-area: footer;
+  background-color: rgb(10, 22, 71);
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  }
+#mainArticle { 
+  grid-area: article;  
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify; 
+  background-image: linear-gradient(to bottom right,blue,white);   
+  font-weight: bold;
+  }
+#mainNav { 
+  grid-area: nav; 
+  background-color: white;
+  
+  }
+#siteAds { 
+  grid-area: ads; 
+  background-color: white;
+  } 
+/* Stack the layout on small devices/viewports. */
+@media all and (max-width: 575px) {
+  body { 
+    grid-template-areas: 
+      "header"
+      "article"
+      "ads"
+      "nav"
+      "footer";
+    grid-template-rows: 80px 1fr 70px 1fr 70px;  
+    grid-template-columns: 1fr;
+ }
+ 
+}
+#head{
+    color: white;
+    font-size: 30px;
+    
+}
+#Result{
+    /* position: absolute;
+    bottom: 0; */
+    background-color: violet;
+    color: blueviolet;
+}
+</style>
+</head>
+<body>
+  <header id="pageHeader"><label id="head"></label></header>
+  <article id="mainArticle">
+    
+     
+  </article>
+  <nav id="mainNav">
+      
+  </nav>
+  <div id="siteAds">Ads</div>
+  <footer id="pageFooter">Footer</footer>
+</body>
