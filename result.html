@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("input").change(function() {
+                //alert("ecdc");
+                alert($(this).val());
+            });
+
+
+
+            $content = "";
+            for ($n = 0; $n < 5; $n++) {
+                $content += "<button onclick=jump('" + $n + "') >" + ($n + 1) + "</button>";
+
+            }
+            $("#jumpto").html($content);
+
+
+
+
+
+
+            $answers = "";
+            $weight = "";
+            $uanswer = "";
+            $res = 0;
+
+
+            $.ajax({
+                url: "http://localhost:3000/ent",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+
+                success: (x) => {
+                    var student = "";
+                    //CONSTRUCTION OF ROWS HAVING 
+                    // DATA FROM JSON OBJECT 
+                    for (var i = 1; i < x.length; i++) {
+                        $answers += x[i].Answer + "  ";
+                        console.log(x[i].Answer);
+                        $weight += x[i].weight + "  ";
+
+
+                    }
+
+
+
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+            $.ajax({
+                url: "http://localhost:3000/lit",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+
+                success: (x) => {
+                    var student = "";
+                    //CONSTRUCTION OF ROWS HAVING 
+                    // DATA FROM JSON OBJECT 
+                    for (var i = 1; i < x.length; i++) {
+                        $answers += x[i].Answer + "  ";
+                        console.log(x[i].Answer);
+                        $weight += x[i].weight + "  ";
+
+                    }
+
+
+
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+            $answers = $answers.split("  ");
+            $uanswer = $uanswer.split("  ");
+            $weight = $weight.split("  ");
+            $answers.pop();
+            $weight.pop();
+            console.log($answers);
+            console.log($uanswer);
+            console.log($weight);
+            console.log(typeof $answers);
+            console.log($answers[0]);
+
+            console.log($res);
+            //   for (var n in answers)
+            //    console.log(n);
+            //  console.log(Object.values(answers));
+
+            // for (var i = 0; i < answers.length; i++) {
+            //     console.log("ho");
+            //     for (var j = 0; j < answers.length; j++) {
+            //         // console.log(answers[j]);
+            //         //     // if (uanswer[i] == answers[j]) {
+            //         //     //     alert("true");
+            //         //     // } else {
+            //         //     //     alert("false");
+            //         //     // }
+
+            //         // }
+            //         // alert($uanswer[$i]);
+            //         //alert(answers.includes("uil"));
+            //         // if ($answers.includes($uanswer[$i])) {
+            //         //     alert("done");
+            //         //     $uanswer[$i] = "Correct";
+            //         //     continue;
+
+
+
+            //     }
+
+
+            // }
+            // console.log($uanswer);
+            //"'" + "input[name=" + $ques[$i] + "]:checked" + "'"
+            $("#count").click(function() {
+
+                alert("started calculation");
+                $ans = "";
+                $ques = ["q1", "q2", "q3", "q4"];
+                for ($i = 0; $i < $ques.length; $i++) {
+
+
+                    $uanswer += $("input[name=" + $ques[$i] + "]:checked", '#myForm').val() + "  ";
+                    // alert($("#": checked).val0());
+                    // $ans += $("." + $ques[$i]).text();
+
+                }
+                $uanswer = $uanswer.split("  ");
+                $uanswer.pop();
+                console.log($uanswer);
+                for ($i = 0; $i < $answers.length; $i++) {
+                    if ($answers[$i] == $uanswer[$i]) {
+                        $res += parseInt($weight[$i]);
+
+                    } else {
+
+
+                    }
+
+                }
+                console.log($res);
+
+            });
+
+
+        });
+
+
+
+        function jump(val) {
+            alert(val);
+            $.ajax({
+                url: "http://localhost:3000/lit",
+                method: "GET",
+                dataType: "JSON",
+                async: false,
+
+                success: (x) => {
+                    var student = x[val].question;
+                    $("#question").text(student);
+                    //CONSTRUCTION OF ROWS HAVING 
+                    // DATA FROM JSON OBJECT 
+
+
+
+
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+    <form id="myForm">
+        <label> 
+            <input 
+                   type="radio"
+                   name="q1" 
+                   value="uil"> 
+          uil  
+        </label>
+        <label> 
+            <input type="radio" 
+                   name="q1" 
+                   value="lix"> 
+          lix 
+        </label>
+        <label> 
+            <input 
+                   type="radio"
+                   name="q1" 
+                   value="uui"> 
+          uui 
+        </label>
+        <label> 
+            <input type="radio" 
+                   name="q1" 
+                   value="uli"> 
+          uli
+        </label>
+        <br><label>
+            <input type="radio" name="q2" value="ccb"> ccb
+            </label>
+        <label> 
+            <input type="radio" 
+                   name="q2" 
+                   value="bvc"> 
+          bvc 
+        </label> <label> 
+            <input 
+                   type="radio"
+                   name="q2" 
+                   value="vbv"> 
+          vbv
+        </label>
+        <label> 
+            <input type="radio" 
+                   name="q2" 
+                   value="vvc"> 
+          vvc  
+        </label><br>
+        <label> 
+            <input type="radio" 
+                   name="q3" 
+                   value="tom"> 
+          tom  
+        </label> <label> 
+            <input 
+                   type="radio"
+                   name="q3" 
+                   value="oom"> 
+          oom  
+        </label>
+        <label> 
+            <input type="radio" 
+                   name="q3" 
+                   value="tot"> 
+          tot  
+        </label> <label> 
+            <input 
+                   type="radio"
+                   name="q3" 
+                   value="mot"> 
+          mot 
+        </label><br>
+        <label> 
+            <input type="radio" 
+                   name="q4" 
+                   value="ook"> 
+          ook  
+        </label> <label> 
+            <input 
+                   type="radio"
+                   name="q4" 
+                   value="okp"> 
+          okp  
+        </label>
+        <label> 
+            <input type="radio" 
+                   name="q4" 
+                   value="ook"> 
+         ook 
+        </label> <label> 
+            <input 
+                   type="radio"
+                   name="q4" 
+                   value="opk"> 
+          opk 
+        </label><br>
+    </form>
+    <button id="count">Submit</button>
+    <!-- <input type="radio" id="age1" name="q1" value="30">
+    <label for="age1" class="q1">uil</label><br>
+    <input type="radio" id="age1" name="q1" value="60">
+    <label for="age2" class="q1">lix</label><br>
+    <input type="radio" id="age1" name="q1" value="100">
+    <label for="age3" class="q1">uui</label><br>
+    <input type="radio" id="age1" name="q1" value="100">
+    <label for="age3" class="q1">uli</label><br><br>
+    <input type="radio" id="age2" name="q2" value="30">
+
+    <label for="age1" class="q2">ccb</label><br>
+    <input type="radio" id="age2" name="q2" value="60">
+    <label for="age2" class="q2">bvc</label><br>
+    <input type="radio" id="age2" name="q2" value="100">
+    <label for="age3" class="q2">vbv</label><br>
+    <input type="radio" id="age2" name="q2" value="100">
+    <label for="age3" class="q2">vvc</label><br><br>
+
+    <input type="radio" id="age3" name="q3" value="30">
+    <label for="age1" class="q3">tom</label><br>
+    <input type="radio" id="age3" name="q3" value="60">
+    <label for="age2" class="q3">oom</label><br>
+    <input type="radio" id="age3" name="q3" value="100">
+    <label for="age3" class="q3">tot</label><br>
+    <input type="radio" id="age3" name="q3" value="100">
+    <label for="age3" class="q3">mot</label><br><br>
+
+    <input type="radio" id="age4" name="q4" value="30">
+    <label for="age1" class="d4">ook</label><br>
+    <input type="radio" id="age4" name="q4" value="60">
+    <label for="age2" class="d4">okp</label><br>
+    <input type="radio" id="age4" name="q4" value="100">
+    <label for="age3" class="d4">okk</label><br>
+    <input type="radio" id="age4" name="q4" value="100">
+    <label for="age3" class="d4">opk</label><br><br>
+    -->
+    <div id="jumpto">
+
+
+    </div>
+    <div id="question">
+
+    </div>
+</body>
+
+</html>
+
+
+
+
+<!-- [10:40 AM] Dadaram Manohar Jadhav package com.cybage; public class Employee {​​​​​​​ //properties, instance variables private int id; private String name; private String address; //constructor, constructor overloading public Employee(){​​​​​​​ this.id
+= 0; this.name = null; this.address = null; }​​​​​​​ public Employee(int id, String name, String address){​​​​​​​ //local variable this.id = id; this.name = name; this.address = address; }​​​​​​​ public int getId() {​​​​​​​ return this.id; }​​​​​​​ public
+void setName(String name) {​​​​​​​ this.name = name; }​​​​​​​ public String getName() {​​​​​​​ return this.name; }​​​​​​​ public void setAddress(String address) {​​​​​​​ this.address = address; }​​​​​​​ public String getAddress() {​​​​​​​ return this.address;
+}​​​​​​​ @Override public String toString() {​​​​​​​ return "Employee [id: "+ this.id+ ", name: "+ this.name + ",address: "+this.address+ "]"; }​​​​​​​ }​​​​​​​ -->
