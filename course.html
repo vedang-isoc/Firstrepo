@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Insert title here</title>
+  <script src="jquery-3.5.1 (1).js"></script>
+  <script>
+    $(document).ready(function () {
+      var passed = 0;
+      var watched=100;
+
+
+      var a = document.getElementById("video");
+     
+
+      setInterval(function () {
+
+        // if(a.currentTime>watched){
+        //   a.currentTime=watched;
+        // }
+       // alert(a.duration);
+        if(a.currentTime>watched && a.currentTime-1>watched){
+        a.currentTime=watched;
+        return 0;
+
+      }
+
+        if (watched <= Math.round(a.currentTime)) {
+          watched = Math.round(a.currentTime);
+
+        }
+        $("#duration").text("Time Watched " + watched + " Seconds");
+        if(watched==Math.round(a.duration)){
+          alert("Video completed");
+
+        }
+
+      }, 1000);
+
+    });
+
+  </script>
+</head>
+
+<body>
+  <video width="400" id="video" controls>
+    <source src="VID-20171009-WA0000.mp4" type="video/mp4">
+
+    Your browser does not support HTML5 video.
+  </video>
+  <div id="duration">
+
+  </div>
+
+</body>
+
+</html>
